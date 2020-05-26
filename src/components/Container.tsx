@@ -3,25 +3,22 @@ import styled, { css } from "styled-components";
 
 interface Props {
   children: ReactNode;
-  fullScreen?: boolean;
+  fill?: boolean;
   background?: string;
 }
 
 const fillMixin = css`
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  width: 100%;
+  height: 100%;
 `;
 
 const Wrapper = styled.section`
-  ${(props: Props) => (props.fullScreen ? fillMixin : "")}
+  ${(props: Props) => (props.fill ? fillMixin : "")};
   background-color: ${(props: Props) => props.background};
 `;
 
-const Container = ({ children, fullScreen, background, ...rest }: Props) => (
-  <Wrapper fullScreen={fullScreen} background={background} {...rest}>
+const Container = ({ children, fill, background, ...rest }: Props) => (
+  <Wrapper fill={fill} background={background} {...rest}>
     {children}
   </Wrapper>
 );
