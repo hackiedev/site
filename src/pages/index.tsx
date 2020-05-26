@@ -4,7 +4,7 @@ import Text from "../components/Text";
 
 const HomePage = () => (
   <Container fullScreen background={"#F40F49"}>
-    <Text>Welcome to sdfgsdf.dev!</Text>
+    <Text>Welcome to hackie.dev!</Text>
   </Container>
 );
 

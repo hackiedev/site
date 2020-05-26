@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styled, { css } from "styled-components";
 
 interface Props {
-  children: Element;
+  children: ReactNode;
   fullScreen?: boolean;
   background?: string;
 }
