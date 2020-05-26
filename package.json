@@ -1,5 +1,5 @@
 {
-  "name": "site.hackie.dev",
+  "name": "hackie.dev",
   "private": true,
   "scripts": {
     "dev": "next",
@@ -9,7 +9,8 @@
   "dependencies": {
     "next": "^9.4.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
   },
   "devDependencies": {
     "typescript": "^3.9.3",
