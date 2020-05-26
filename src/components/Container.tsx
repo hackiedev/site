@@ -1,7 +1,8 @@
 import React, { ReactNode } from "react";
 import styled, { css } from "styled-components";
+import { paddingMixin, PaddingMixingProps } from "../utils/style";
 
-interface Props {
+interface Props extends PaddingMixingProps {
   children: ReactNode;
   fill?: boolean;
   background?: string;
@@ -15,6 +16,7 @@ const fillMixin = css`
 const Wrapper = styled.section`
   ${(props: Props) => (props.fill ? fillMixin : "")};
   background-color: ${(props: Props) => props.background};
+  ${paddingMixin}
 `;
 
 const Container = ({ children, fill, background, ...rest }: Props) => (
