@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Container from "../components/Container";
 import Text from "../components/Text";
+import { colors } from "../utils/style";
 
 const MassiveHeader = styled(Text)`
   position: absolute;
@@ -12,7 +13,7 @@ const MassiveHeader = styled(Text)`
 `;
 
 const HomePage = () => (
-  <Container padding={"small"} fill background={"#F40F49"}>
+  <Container padding={"small"} fill background={colors.red}>
     <MassiveHeader padding={"small"} component={"h1"} color="#FFF">
       Welcome to hackie.dev!
     </MassiveHeader>

@@ -7,6 +7,13 @@ export const separationSizes = {
   small: "1.5rem",
 };
 
+export const colors = {
+  blue: "#1C4D63",
+  black: "#232323",
+  red: "#C52F38",
+  grey: "#E0DED5",
+};
+
 export interface PaddingMixingProps {
   padding?: PaddingProp;
   paddingHorizontal?: PaddingProp;
