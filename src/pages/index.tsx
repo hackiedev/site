@@ -6,18 +6,34 @@ import Text from "../components/Text";
 import { colors } from "../utils/style";
 
 const MassiveHeader = styled(Text)`
-  position: absolute;
-  bottom: 0;
-  left: 0;
   font-size: 10em;
 `;
 
+const Screen = styled(Container)`
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+`;
+
+const FirstScreen = styled(Screen)`
+  justify-content: flex-end;
+`;
+
+const SecondScreen = styled(Screen)``;
+
 const HomePage = () => (
-  <Container padding={"small"} fill background={colors.red}>
-    <MassiveHeader padding={"small"} component={"h1"} color="#FFF">
-      Welcome to hackie.dev!
-    </MassiveHeader>
-  </Container>
+  <>
+    <FirstScreen padding={"small"} background={colors.red}>
+      <MassiveHeader padding={"small"} component={"h1"} color="#FFF">
+        Welcome to hackie.dev!
+      </MassiveHeader>
+    </FirstScreen>
+    <SecondScreen padding={"small"} background={colors.blue}>
+      <MassiveHeader padding={"small"} component={"h1"} color="#FFF">
+        Buy us a beer!
+      </MassiveHeader>
+    </SecondScreen>
+  </>
 );
 
 export default HomePage;
