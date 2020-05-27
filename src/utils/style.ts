@@ -12,6 +12,7 @@ export const colors = {
   black: "#232323",
   red: "#C52F38",
   grey: "#E0DED5",
+  white: "#FFFFFF",
 };
 
 export interface PaddingMixingProps {
