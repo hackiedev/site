@@ -15,23 +15,18 @@ interface Props {
 const TabWrapper = styled(Text)`
   color: ${colors.white};
   font-weight: 500;
-  text-decoration: none;
   transition: 200ms all;
+  cursor: pointer;
+  border-radius: 4em;
   &:hover {
     background: ${colors.grey};
     color: ${colors.black};
-    border-radius: 4em;
   }
 `;
 
 const Tab = ({ tab }: Props) => {
   return (
-    <TabWrapper
-      padding="small"
-      href="javascript:void(0)"
-      component="a"
-      onClick={tab.onClick}
-    >
+    <TabWrapper padding="small" component="a" onClick={tab.onClick}>
       {tab.name}
     </TabWrapper>
   );
