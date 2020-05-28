@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import Container from "../components/Container";
@@ -27,25 +27,40 @@ const CenterAlignedIcon = styled(Icon)`
 
 const SecondScreen = styled(Screen)``;
 
-const HomePage = () => (
-  <>
-    <FirstScreen background={colors.red}>
-      <MassiveHeader padding={"small"} component={"h1"} color="#FFF">
-        Welcome to hackie.dev!
-      </MassiveHeader>
-      <CenterAlignedIcon
-        name="ExpandMore"
-        animation={"bounceY"}
-        color="white"
-        size={50}
-      />
-    </FirstScreen>
-    <SecondScreen background={colors.blue}>
-      <MassiveHeader padding="small" component={"h1"} color="#FFF">
-        Buy us a beer!
-      </MassiveHeader>
-    </SecondScreen>
-  </>
-);
+const HomePage = () => {
+  const [displayScrollIcon, setDisplayScrollIcon] = useState(true);
+
+  const scrollSecondScreen = () => {
+    window.scrollTo({
+      behavior: "smooth",
+      top: document.getElementById("second-screen").offsetTop,
+    });
+    setDisplayScrollIcon(false);
+  };
+
+  return (
+    <>
+      <FirstScreen background={colors.red}>
+        <MassiveHeader padding="small" component={"h1"} color="#FFF">
+          Welcome to hackie.dev!
+        </MassiveHeader>
+        {displayScrollIcon && (
+          <CenterAlignedIcon
+            name="ExpandMore"
+            animation="bounceY"
+            color="white"
+            size={50}
+            onClick={scrollSecondScreen}
+          />
+        )}
+      </FirstScreen>
+      <SecondScreen background={colors.blue} id="second-screen">
+        <MassiveHeader padding="small" component="h1" color="#FFF">
+          Buy us a beer!
+        </MassiveHeader>
+      </SecondScreen>
+    </>
+  );
+};
 
 export default HomePage;
