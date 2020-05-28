@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import Container from "../components/Container";
 import Text from "../components/Text";
 import { colors } from "../utils/style";
 import Icon from "../components/Icon";
+import MenuTabs from "../components/Tabs/TabsMenu";
 
 const MassiveHeader = styled(Text)`
   font-size: 10vmin;
@@ -30,17 +31,26 @@ const SecondScreen = styled(Screen)``;
 const HomePage = () => {
   const [displayScrollIcon, setDisplayScrollIcon] = useState(true);
 
-  const scrollSecondScreen = () => {
+  const scrollToScreen = (screenID: string) => {
     window.scrollTo({
       behavior: "smooth",
-      top: document.getElementById("second-screen").offsetTop,
+      top: document.getElementById(screenID).offsetTop,
     });
-    setDisplayScrollIcon(false);
+    if (displayScrollIcon) setDisplayScrollIcon(false);
   };
 
   return (
     <>
-      <FirstScreen background={colors.red}>
+      <MenuTabs
+        tabs={[
+          {
+            name: "Welcome",
+            onClick: () => scrollToScreen("first-screen"),
+          },
+          { name: "Beer", onClick: () => scrollToScreen("second-screen") },
+        ]}
+      />
+      <FirstScreen background={colors.red} id="first-screen">
         <MassiveHeader padding="small" component={"h1"} color="#FFF">
           Welcome to hackie.dev!
         </MassiveHeader>
@@ -50,7 +60,7 @@ const HomePage = () => {
             animation="bounceY"
             color="white"
             size={50}
-            onClick={scrollSecondScreen}
+            onClick={() => scrollToScreen("second-screen")}
           />
         )}
       </FirstScreen>
