@@ -7,12 +7,12 @@ import { colors } from "../utils/style";
 import Icon from "../components/Icon";
 
 const MassiveHeader = styled(Text)`
-  font-size: 10em;
+  font-size: 10vmin;
 `;
 
 const Screen = styled(Container)`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 `;

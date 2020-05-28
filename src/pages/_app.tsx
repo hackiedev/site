@@ -16,7 +16,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <title>Hackie.dev</title>
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=0.41, maximum-scale=1"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
         />
         <link
           href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
