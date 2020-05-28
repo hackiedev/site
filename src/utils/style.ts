@@ -1,11 +1,11 @@
 import { css } from "styled-components";
 
-export type PaddingProp = keyof typeof separationSizes;
-
 export const separationSizes = {
   default: "1rem",
-  small: "1.5rem",
+  small: "0.5rem",
 };
+
+export type PaddingProp = keyof typeof separationSizes;
 
 export const colors = {
   blue: "#1C4D63",
