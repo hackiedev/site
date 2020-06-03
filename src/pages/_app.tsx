@@ -6,7 +6,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   body *, body *:before, body *:after {
     box-sizing: border-box;
-  }
+  };
 `;
 
 const App = ({ Component, pageProps }: AppProps) => {

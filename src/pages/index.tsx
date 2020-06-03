@@ -6,6 +6,7 @@ import Text from "../components/Text";
 import { colors } from "../utils/style";
 import Icon from "../components/Icon";
 import MenuTabs from "../components/Tabs/TabsMenu";
+import TeamProfile from "../components/TeamProfile";
 
 const MassiveHeader = styled(Text)`
   font-size: 10vmin;
@@ -27,6 +28,14 @@ const CenterAlignedIcon = styled(Icon)`
 `;
 
 const SecondScreen = styled(Screen)``;
+
+const ThirdScreen = styled(Screen)``;
+
+const TeamSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
 
 const HomePage = () => {
   const [displayScrollIcon, setDisplayScrollIcon] = useState(true);
@@ -51,7 +60,7 @@ const HomePage = () => {
         ]}
       />
       <FirstScreen background={colors.red} id="first-screen">
-        <MassiveHeader padding="small" component={"h1"} color="#FFF">
+        <MassiveHeader padding="small" component="h1" color="#FFF">
           Welcome to hackie.dev!
         </MassiveHeader>
         {displayScrollIcon && (
@@ -69,6 +78,28 @@ const HomePage = () => {
           Buy us a beer!
         </MassiveHeader>
       </SecondScreen>
+      <ThirdScreen background={colors.grey}>
+        <MassiveHeader padding="small" component="h1" color="#000">
+          Team
+        </MassiveHeader>
+        <TeamSection padding="small">
+          <TeamProfile
+            name="Oscar Blanco"
+            description="Software/DevOps Engineer"
+            avatarSrc="/oscar_mexican.jpeg"
+          />
+          <TeamProfile
+            name="Xavier Moreno"
+            description="Fullstack Developer"
+            avatarSrc="/xavi_himself.png"
+          />
+          <TeamProfile
+            name="Fernando García"
+            description="React Expert"
+            avatarSrc="/nando_miner.png"
+          />
+        </TeamSection>
+      </ThirdScreen>
     </>
   );
 };

@@ -13,6 +13,7 @@ interface Props {
 }
 
 const TabWrapper = styled(Text)`
+  -webkit-overflow-scrolling: touch;
   color: ${colors.white};
   font-weight: 500;
   transition: 200ms all;
