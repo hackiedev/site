@@ -3,6 +3,7 @@ import { css } from "styled-components";
 export const separationSizes = {
   default: "1rem",
   small: "0.5rem",
+  large: "6rem",
 };
 
 export type PaddingProp = keyof typeof separationSizes;
