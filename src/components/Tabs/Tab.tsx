@@ -10,11 +10,12 @@ export interface ITab {
 
 interface Props {
   tab: ITab;
+  color: keyof typeof colors;
 }
 
 const TabWrapper = styled(Text)`
   -webkit-overflow-scrolling: touch;
-  color: ${colors.white};
+  color: ${(props: Props) => props.color};
   font-weight: 500;
   transition: 200ms all;
   cursor: pointer;
@@ -25,12 +26,10 @@ const TabWrapper = styled(Text)`
   }
 `;
 
-const Tab = ({ tab }: Props) => {
-  return (
-    <TabWrapper padding="small" component="a" onClick={tab.onClick}>
-      {tab.name}
-    </TabWrapper>
-  );
-};
+const Tab = ({ tab, color }: Props) => (
+  <TabWrapper padding="small" component="a" onClick={tab.onClick} color={color}>
+    {tab.name}
+  </TabWrapper>
+);
 
 export default Tab;

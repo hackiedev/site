@@ -3,10 +3,11 @@ import styled from "styled-components";
 import Container from "../Container";
 
 import Tab, { ITab } from "./Tab";
-import { separationSizes } from "../../utils/style";
+import { separationSizes, colors } from "../../utils/style";
 
 interface Props {
   tabs: ITab[];
+  color: keyof typeof colors;
 }
 
 const TabsContainer = styled(Container)`
@@ -15,14 +16,12 @@ const TabsContainer = styled(Container)`
   right: ${separationSizes.default};
 `;
 
-const MenuTabs = ({ tabs }: Props) => {
-  return (
-    <TabsContainer>
-      {tabs.map((tab) => (
-        <Tab key={tab.name} tab={tab} />
-      ))}
-    </TabsContainer>
-  );
-};
+const TabsMenu = ({ tabs, color }: Props) => (
+  <TabsContainer>
+    {tabs.map((tab) => (
+      <Tab key={tab.name} tab={tab} color={color} />
+    ))}
+  </TabsContainer>
+);
 
-export default MenuTabs;
+export default TabsMenu;

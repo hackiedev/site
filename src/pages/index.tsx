@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, ReactNode, ReactChildren } from "react";
 import styled from "styled-components";
+import { useInView } from "react-intersection-observer";
 
 import Container from "../components/Container";
 import Text from "../components/Text";
 import { colors } from "../utils/style";
 import Icon from "../components/Icon";
-import MenuTabs from "../components/Tabs/TabsMenu";
+import TabsMenu from "../components/Tabs/TabsMenu";
 import TeamProfile from "../components/TeamProfile";
 import { cssFor } from "../utils/breakpoints";
 
@@ -19,6 +20,31 @@ const Screen = styled(Container)`
   display: flex;
   flex-direction: column;
 `;
+
+interface VisibleScreenProps {
+  children: ReactNode;
+  threshold?: number;
+  onVisible: (isVisible: boolean) => void;
+}
+
+const VisibleScreen = ({
+  children,
+  onVisible,
+  threshold = 0.97,
+  ...rest
+}: VisibleScreenProps) => {
+  const [ref, inView] = useInView({
+    threshold: threshold,
+  });
+  useEffect(() => {
+    onVisible && onVisible(inView);
+  }, [inView]);
+  return (
+    <div ref={ref} {...rest}>
+      {children}
+    </div>
+  );
+};
 
 const WelcomeScreen = styled(Screen)`
   justify-content: flex-end;
@@ -44,6 +70,7 @@ const TeamSection = styled.div`
 
 const HomePage = () => {
   const [displayScrollIcon, setDisplayScrollIcon] = useState(true);
+  const [tabsColor, setTabsColor] = useState(colors.white);
 
   const scrollToScreen = (screenID: string) => {
     window.scrollTo({
@@ -55,7 +82,8 @@ const HomePage = () => {
 
   return (
     <>
-      <MenuTabs
+      <TabsMenu
+        color={tabsColor as keyof typeof colors}
         tabs={[
           {
             name: "Welcome",
@@ -65,20 +93,27 @@ const HomePage = () => {
           { name: "Form", onClick: () => scrollToScreen("form-screen") },
         ]}
       />
-      <WelcomeScreen background={colors.red} id="welcome-screen">
-        <MassiveHeader padding="small" component="h1" color="#FFF">
-          Welcome to hackie.dev!
-        </MassiveHeader>
-        {displayScrollIcon && (
-          <CenterAlignedIcon
-            name="ExpandMore"
-            animation="bounceY"
-            color="white"
-            size={50}
-            onClick={() => scrollToScreen("team-screen")}
-          />
-        )}
-      </WelcomeScreen>
+      <VisibleScreen
+        threshold={0.02}
+        onVisible={(isVisible: boolean) => {
+          setTabsColor(isVisible ? colors.white : colors.black);
+        }}
+      >
+        <WelcomeScreen background={colors.red} id="welcome-screen">
+          <MassiveHeader padding="small" component="h1" color="#FFF">
+            Welcome to hackie.dev!
+          </MassiveHeader>
+          {displayScrollIcon && (
+            <CenterAlignedIcon
+              name="ExpandMore"
+              animation="bounceY"
+              color="white"
+              size={50}
+              onClick={() => scrollToScreen("team-screen")}
+            />
+          )}
+        </WelcomeScreen>
+      </VisibleScreen>
       <TeamScreen background={colors.grey} id="team-screen">
         <MassiveHeader padding="small" component="h1" color="#000">
           Team
@@ -104,11 +139,17 @@ const HomePage = () => {
           />
         </TeamSection>
       </TeamScreen>
-      <FormScreen background={colors.blue} id="form-screen">
-        <MassiveHeader padding="small" component="h1" color="#FFF">
-          Buy us a beer!
-        </MassiveHeader>
-      </FormScreen>
+      <VisibleScreen
+        onVisible={(isVisible: boolean) => {
+          setTabsColor(isVisible ? colors.white : colors.black);
+        }}
+      >
+        <FormScreen background={colors.blue} id="form-screen">
+          <MassiveHeader padding="small" component="h1" color="#FFF">
+            Buy us a beer!
+          </MassiveHeader>
+        </FormScreen>
+      </VisibleScreen>
     </>
   );
 };
