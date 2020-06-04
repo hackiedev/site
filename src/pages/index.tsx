@@ -57,6 +57,7 @@ const HomePage = () => {
             onClick: () => scrollToScreen("first-screen"),
           },
           { name: "Beer", onClick: () => scrollToScreen("second-screen") },
+          { name: "Team", onClick: () => scrollToScreen("third-screen") },
         ]}
       />
       <FirstScreen background={colors.red} id="first-screen">
@@ -78,7 +79,7 @@ const HomePage = () => {
           Buy us a beer!
         </MassiveHeader>
       </SecondScreen>
-      <ThirdScreen background={colors.grey}>
+      <ThirdScreen background={colors.grey} id="third-screen">
         <MassiveHeader padding="small" component="h1" color="#000">
           Team
         </MassiveHeader>
