@@ -1,8 +1,13 @@
 import React, { ReactNode } from "react";
 import styled, { css } from "styled-components";
-import { paddingMixin, PaddingMixingProps } from "../utils/style";
+import {
+  flexMixin,
+  FlexMixinProps,
+  paddingMixin,
+  PaddingMixingProps,
+} from "../utils/style";
 
-interface Props extends PaddingMixingProps {
+interface Props extends PaddingMixingProps, FlexMixinProps {
   children: ReactNode;
   fill?: boolean;
   background?: string;
@@ -17,6 +22,7 @@ const Wrapper = styled.section`
   ${(props: Props) => (props.fill ? fillMixin : "")};
   background-color: ${(props: Props) => props.background};
   ${paddingMixin}
+  ${flexMixin}
 `;
 
 const Container = ({ children, fill, background, ...rest }: Props) => (

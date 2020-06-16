@@ -2,13 +2,14 @@ import React, { useEffect, useState, ReactNode, ReactChildren } from "react";
 import styled from "styled-components";
 import { useInView } from "react-intersection-observer";
 
-import Container from "../components/Container";
-import Text from "../components/Text";
-import { colors } from "../utils/style";
-import Icon from "../components/Icon";
-import TabsMenu from "../components/Tabs/TabsMenu";
-import TeamProfile from "../components/TeamProfile";
-import { cssFor } from "../utils/breakpoints";
+import Container from "../../components/Container";
+import Text from "../../components/Text";
+import { colors } from "../../utils/style";
+import Icon from "../../components/Icon";
+import TabsMenu from "../../components/Tabs/TabsMenu";
+import TeamProfile from "../../components/TeamProfile";
+import { cssFor } from "../../utils/breakpoints";
+import ContactUs from "../../components/pages/index/ContactUs";
 
 const MassiveHeader = styled(Text)`
   font-size: 10vmin;
@@ -145,9 +146,7 @@ const HomePage = () => {
         }}
       >
         <FormScreen background={colors.blue} id="form-screen">
-          <MassiveHeader padding="small" component="h1" color="#FFF">
-            Buy us a beer!
-          </MassiveHeader>
+          <ContactUs />
         </FormScreen>
       </VisibleScreen>
     </>

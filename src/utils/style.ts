@@ -6,7 +6,14 @@ export const separationSizes = {
   large: "6rem",
 };
 
-export type PaddingProp = keyof typeof separationSizes;
+export type SeparationSize = keyof typeof separationSizes;
+
+export const flexDirection = {
+  row: "row",
+  column: "column",
+};
+
+export type FlexDirection = keyof typeof flexDirection;
 
 export const colors = {
   blue: "#1C4D63",
@@ -17,10 +24,15 @@ export const colors = {
 };
 
 export interface PaddingMixingProps {
-  padding?: PaddingProp;
-  paddingHorizontal?: PaddingProp;
-  paddingVertical?: PaddingProp;
+  padding?: SeparationSize;
+  paddingHorizontal?: SeparationSize;
+  paddingVertical?: SeparationSize;
+  paddingLeft?: SeparationSize;
+  paddingRight?: SeparationSize;
+  paddingTop?: SeparationSize;
+  paddingBottom?: SeparationSize;
 }
+
 export const paddingMixin = css`
   ${(props: PaddingMixingProps) =>
     props.padding ? `padding: ${separationSizes[props.padding]};` : ""}
@@ -32,4 +44,35 @@ export const paddingMixin = css`
     props.paddingVertical
       ? `padding: ${separationSizes[props.paddingVertical]} 0;`
       : ""}
+  ${(props: PaddingMixingProps) =>
+    props.paddingTop
+      ? `padding-top: ${separationSizes[props.paddingTop]};`
+      : ""}
+  ${(props: PaddingMixingProps) =>
+    props.paddingRight
+      ? `padding-right: ${separationSizes[props.paddingRight]};`
+      : ""}
+  ${(props: PaddingMixingProps) =>
+    props.paddingBottom
+      ? `padding-bottom: ${separationSizes[props.paddingBottom]};`
+      : ""}
+  ${(props: PaddingMixingProps) =>
+    props.paddingLeft
+      ? `padding-left: ${separationSizes[props.paddingLeft]};`
+      : ""}
+`;
+
+export interface FlexMixinProps {
+  direction?: FlexDirection;
+  size?: number;
+}
+
+const flexCss = css`
+  display: flex;
+  flex-direction: ${(props: FlexMixinProps) => props.direction || "row"};
+  flex: ${(props: FlexMixinProps) => props.size || 1};
+`;
+
+export const flexMixin = css`
+  ${(props) => (props.direction || props.size) && flexCss}
 `;
