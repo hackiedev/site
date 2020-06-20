@@ -1,6 +1,7 @@
 from setuptools import find_packages, setup
 
 install_requires = [
+    "email-validator~=1.1.1",
     "fastapi~=0.58.0",
     "gunicorn~=20.0.4",
     "pydantic~=1.5.1",
