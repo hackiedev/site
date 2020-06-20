@@ -21,9 +21,9 @@ class Contact(BaseModel):
     description: constr(min_length=30, max_length=500)
 
     def to_email_body(self) -> str:
-        return f"""
+        return f"""\\
 From: {self.email}
-Subject: '{self.email} has fullfilled the site form'
+Subject: {self.email} has fullfilled the site form
 
 NAME: '{self.name}'
 EMAIL: '{self.email}'
