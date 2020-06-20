@@ -20,7 +20,7 @@ class Contact(BaseModel):
         return ""
 
 
-@app.post("/")
+@app.post("/api/contact")
 async def contact(contact: Contact):
     with smtplib.SMTP_SSL(
         "smtp.gmail.com", 465, context=ssl.create_default_context()
