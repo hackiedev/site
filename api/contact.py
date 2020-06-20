@@ -1,8 +1,11 @@
 import smtplib
 import ssl
+from typing import List
 
-from fastapi import Body, FastAPI, status
-from pydantic import BaseModel, Field
+from fastapi import FastAPI
+from fastapi.openapi.models import Response
+from pydantic import BaseModel, constr, EmailStr
+from starlette.status import HTTP_201_CREATED
 
 app = FastAPI()
 
