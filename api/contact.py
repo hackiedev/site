@@ -5,8 +5,8 @@ from html import escape
 from typing import List
 
 from fastapi import FastAPI
-from fastapi.openapi.models import Response
 from pydantic import BaseModel, EmailStr, constr
+from starlette.responses import Response
 from starlette.status import HTTP_201_CREATED
 
 app = FastAPI()
@@ -22,6 +22,9 @@ class Contact(BaseModel):
 
     def to_email_body(self) -> str:
         return f"""
+From: {self.email}
+Subject: '{self.email} has fullfilled the site form'
+
 NAME: '{self.name}'
 EMAIL: '{self.email}'
 SERVICES: '{self.services}'
@@ -36,5 +39,4 @@ async def contact(contact: Contact):
     ) as server:
         server.login(COMPANY_EMAIL, os.environ["GMAIL_PASSWORD"])
         server.sendmail(COMPANY_EMAIL, COMPANY_EMAIL, contact.to_email_body())
-
     return Response(status_code=HTTP_201_CREATED)
