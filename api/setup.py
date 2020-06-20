@@ -2,15 +2,14 @@ from setuptools import find_packages, setup
 
 install_requires = [
     "fastapi~=0.58.0",
-    "gunicorn~=20.0.4",
     "pydantic[email]~=1.5.1",
-    "uvicorn~=0.11.5",
 ]
 
 dev_requires = [
     "black>=19.10b0",
     "flake8>=3.8.0a2",
     "isort>=4.3.21",
+    "uvicorn~=0.11.5",
 ]
 
 
