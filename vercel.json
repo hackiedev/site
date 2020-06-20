@@ -7,7 +7,4 @@
       "maxDuration": 10
     }
   },
-  "env": {
-    "GMAIL_PASSWORD": "@gmail-password"
-  }
 }
