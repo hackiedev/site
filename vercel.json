@@ -1,8 +1,0 @@
-{
-  "functions": {
-    "src/api/contact.py": {
-      "memory": 128,
-      "maxDuration": 10
-    }
-  }
-}
