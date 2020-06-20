@@ -21,7 +21,7 @@ class Contact(BaseModel):
 
 
 @app.post("/")
-async def contact_form(contact: Contact):
+async def index(contact: Contact):
     with smtplib.SMTP_SSL(
         "smtp.gmail.com", 465, context=ssl.create_default_context()
     ) as server:
