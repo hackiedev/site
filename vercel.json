@@ -6,5 +6,8 @@
       "memory": 128,
       "maxDuration": 10
     }
+  },
+  "env": {
+    "GMAIL_PASSWORD": "@gmail-password"
   }
 }
