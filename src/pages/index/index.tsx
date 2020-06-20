@@ -91,7 +91,7 @@ const HomePage = () => {
             onClick: () => scrollToScreen("welcome-screen"),
           },
           { name: "Team", onClick: () => scrollToScreen("team-screen") },
-          { name: "Form", onClick: () => scrollToScreen("form-screen") },
+          { name: "Hire us", onClick: () => scrollToScreen("hire-us-screen") },
         ]}
       />
       <VisibleScreen
@@ -145,7 +145,7 @@ const HomePage = () => {
           setTabsColor(isVisible ? colors.white : colors.black);
         }}
       >
-        <FormScreen background={colors.blue} id="form-screen">
+        <FormScreen background={colors.blue} id="hire-us-screen">
           <ContactUs />
         </FormScreen>
       </VisibleScreen>

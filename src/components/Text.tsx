@@ -4,6 +4,7 @@ import { paddingMixin, PaddingMixingProps } from "../utils/style";
 
 export const fontSizes = {
   default: "1em",
+  medium: "1.5em",
   big: "2em",
 };
 
