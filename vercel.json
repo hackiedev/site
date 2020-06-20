@@ -1,4 +1,10 @@
 {
   "version": 2,
-  "alias": ["hackie.dev", "hackie"]
+  "alias": ["hackie.dev", "hackie"],
+  "functions": {
+    "api/contact.py": {
+      "memory": 128,
+      "maxDuration": 10
+    }
+  }
 }
