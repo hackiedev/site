@@ -19,6 +19,6 @@ setup(
     version="0.0.1",
     packages=find_packages(),
     install_requires=install_requires,
-    python_requires=">=3.8",
+    python_requires=">=3.6",
     extras_require={"dev": dev_requires},
 )
