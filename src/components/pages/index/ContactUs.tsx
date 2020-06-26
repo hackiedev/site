@@ -13,6 +13,11 @@ const Tag = styled(Chip)`
   && {
     margin: 10px;
   }
+
+  &&.active-tag {
+    background-color: ${colors.black};
+    color: ${colors.white};
+  }
 `;
 
 const ContactUs = () => {
@@ -44,7 +49,7 @@ const ContactUs = () => {
           <Container direction="row">
             {["Mobile", "Webpage"].map((tag_label) => (
               <Tag
-                color={services.includes(tag_label) ? "primary" : ""}
+                className={services.includes(tag_label) ? "active-tag" : ""}
                 label={tag_label}
                 onClick={() => {
                   if (services.includes(tag_label)) {
@@ -65,7 +70,7 @@ const ContactUs = () => {
             {["less than 5K", "5k-10K", "10K-50K", "more than 50K"].map(
               (tag_label) => (
                 <Tag
-                  color={services.includes(tag_label) ? "primary" : ""}
+                  className={services.includes(tag_label) ? "active-tag" : ""}
                   label={tag_label}
                   onClick={() => {
                     if (services.includes(tag_label)) {
